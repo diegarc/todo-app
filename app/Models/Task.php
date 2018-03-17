@@ -15,4 +15,19 @@ class Task extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['text', 'description', 'user_id'];
+
+    /**
+     * The tags that belong to the task.
+     */
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }

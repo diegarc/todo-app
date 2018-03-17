@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
+use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -23,7 +26,9 @@ class TaskController extends Controller
      */
     public function create()
     {
-        return view('tasks.create');
+        $data['tags'] = Tag::all();
+
+        return view('tasks.create', $data);
     }
 
     /**
@@ -34,7 +39,20 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $task = new Task();
+        $task->text = $request->text;
+        $task->description = $request->description;
+        $task->user_id = Auth::id();
+        $task->save();
+
+        foreach ($request->tags as $tag) {
+            $task->tags()->create([
+                'text' => $tag,
+                'user_id' => Auth::id()
+            ]);
+        }
+
+        return redirect('/tasks');
     }
 
     /**
