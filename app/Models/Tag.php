@@ -22,4 +22,17 @@ class Tag extends Model
         parent::boot();
         static::addGlobalScope(new UserScope());
     }
+
+    /**
+     * Scope a query to find by the text.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string $text
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeFindByText($query, $text)
+    {
+        return $query->where('text', $text);
+    }
+
 }

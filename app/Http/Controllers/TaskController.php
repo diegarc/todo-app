@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTask;
 use App\Models\Tag;
 use App\Models\Task;
 use Illuminate\Http\Request;
@@ -35,10 +36,10 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param StoreTask $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTask $request)
     {
         $task = new Task();
         $task->text = $request->text;
@@ -46,11 +47,17 @@ class TaskController extends Controller
         $task->user_id = Auth::id();
         $task->save();
 
-        foreach ($request->tags as $tag) {
-            $task->tags()->create([
-                'text' => $tag,
-                'user_id' => Auth::id()
-            ]);
+        foreach ($request->tags as $tag_text) {
+            $tag = Tag::findByText($tag_text)->first();
+
+            if ($tag) {
+                $task->tags()->attach($tag);
+            } else {
+                $task->tags()->create([
+                    'text' => $tag,
+                    'user_id' => Auth::id()
+                ]);
+            }
         }
 
         return redirect('/tasks');

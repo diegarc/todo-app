@@ -13,11 +13,13 @@
             <form role="form" action="/tasks" method="post">
                 @csrf
                 <div class="box-body">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-bookmark"></i></span>
-                        <input type="text" name="text" class="form-control" placeholder="Tarea">
+                    <div class="form-group {{ $errors->has('text') ? 'has-error' : '' }}">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-bookmark"></i></span>
+                            <input type="text" name="text" class="form-control" placeholder="Tarea">
+                        </div>
+                        <span class="help-block">{{ $errors->first('text') }}</span>
                     </div>
-                    <br/>
 
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-tag"></i></span>
