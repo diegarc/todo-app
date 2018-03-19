@@ -54,7 +54,7 @@ class TaskController extends Controller
                 $task->tags()->attach($tag);
             } else {
                 $task->tags()->create([
-                    'text' => $tag,
+                    'text' => $tag_text,
                     'user_id' => Auth::id()
                 ]);
             }
