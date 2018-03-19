@@ -39,7 +39,7 @@
 
                 <div class="box-footer">
                     <button type="submit" class="btn btn-info">Guardar</button>
-                    <button type="submit" class="btn btn-default">Cancelar</button>
+                    <a href="/tasks" class="btn btn-default">Cancelar</a>
                 </div>
             </form>
         </div>

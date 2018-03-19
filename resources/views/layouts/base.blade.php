@@ -26,6 +26,9 @@
        folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="/css/skins/_all-skins.css">
 
+    <!-- iCheck -->
+    <link rel="stylesheet" href="../../../assets/vendor_plugins/iCheck/flat/blue.css">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -711,9 +714,17 @@
 <!-- MinimalPro Admin App -->
 <script src="../../js/template.js"></script>
 
+<!-- iCheck -->
+<script src="../../../assets/vendor_plugins/iCheck/icheck.js"></script>
+
 <script>
     //Initialize Select2 Elements
     $('.select2').select2({tags: true});
+
+    $('.mailbox-messages input[type="checkbox"]').iCheck({
+        checkboxClass: 'icheckbox_flat-blue',
+        radioClass: 'iradio_flat-blue'
+    });
 </script>
 
 </body>

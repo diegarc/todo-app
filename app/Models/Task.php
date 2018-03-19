@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Scopes\UserScope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -22,6 +23,15 @@ class Task extends Model
      * @var array
      */
     protected $fillable = ['text', 'description', 'user_id'];
+
+    /**
+     * The "booting" method of the model.
+     */
+    protected static function boot()
+    {
+        parent::boot();
+        static::addGlobalScope(new UserScope());
+    }
 
     /**
      * The tags that belong to the task.
