@@ -20,7 +20,7 @@
                             <tr>
                                 <td width="50"><input type="checkbox"></td>
                                 <td class="mailbox-name">
-                                    {{ $task->text }}
+                                    <a href="/tasks/{{ $task->id }}/edit">{{ $task->text }}</a>
                                     <p class="text-muted no-margin">{{ $task->description }}</p>
                                 </td>
                                 <td class="mailbox-name text-right">

@@ -28,9 +28,10 @@ class TaskController extends Controller
      */
     public function create()
     {
-        $data['tags'] = Tag::all();
+        $data['task'] = new Task();
+        $data['tags'] = Tag::orderBy('text')->get();
 
-        return view('tasks.create', $data);
+        return view('tasks.store', $data);
     }
 
     /**
@@ -66,35 +67,57 @@ class TaskController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Task $task)
     {
-        dd('show');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Task $task)
     {
-        //
+        $data['task'] = $task;
+        $data['tags'] = Tag::orderBy('text')->get();
+
+        return view('tasks.store', $data);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Task $task)
     {
-        //
+        $task->text = $request->text;
+        $task->description = $request->description;
+        $task->save();
+
+        $task->tags()->detach();
+
+        foreach ($request->tags as $tag_text) {
+            $tag = Tag::findByText($tag_text)->first();
+
+            if ($tag) {
+                $task->tags()->attach($tag);
+            } else {
+                $task->tags()->create([
+                    'text' => $tag_text,
+                    'user_id' => Auth::id()
+                ]);
+            }
+        }
+
+        return redirect('/tasks');
     }
 
     /**
