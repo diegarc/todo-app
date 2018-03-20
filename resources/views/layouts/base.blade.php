@@ -17,17 +17,20 @@
     <link rel="stylesheet" href="/assets/vendor_components/bootstrap/dist/css/bootstrap-extend.css">
 
     <!-- Select2 -->
-    <link rel="stylesheet" href="../../../assets/vendor_components/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="/assets/vendor_components/select2/dist/css/select2.min.css">
 
     <!-- Theme style -->
     <link rel="stylesheet" href="/css/master_style.css">
+
+    <!-- Sweet-Alert  -->
+    <link href="/assets/vendor_components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
 
     <!-- MinimalPro Admin Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="/css/skins/_all-skins.css">
 
     <!-- iCheck -->
-    <link rel="stylesheet" href="../../../assets/vendor_plugins/iCheck/flat/blue.css">
+    <link rel="stylesheet" href="/assets/vendor_plugins/iCheck/flat/blue.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -703,7 +706,7 @@
 <script src="/assets/vendor_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!-- Select2 -->
-<script src="../../../assets/vendor_components/select2/dist/js/select2.full.js"></script>
+<script src="/assets/vendor_components/select2/dist/js/select2.full.js"></script>
 
 <!-- SlimScroll -->
 <script src="/assets/vendor_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
@@ -711,11 +714,15 @@
 <!-- FastClick -->
 <script src="/assets/vendor_components/fastclick/lib/fastclick.js"></script>
 
+<!-- Sweet-Alert  -->
+<script src="/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
+<script src="/assets/vendor_components/sweetalert/jquery.sweet-alert.custom.js"></script>
+
 <!-- MinimalPro Admin App -->
-<script src="../../js/template.js"></script>
+<script src="/js/template.js"></script>
 
 <!-- iCheck -->
-<script src="../../../assets/vendor_plugins/iCheck/icheck.js"></script>
+<script src="/assets/vendor_plugins/iCheck/icheck.js"></script>
 
 <script>
     //Initialize Select2 Elements
@@ -724,6 +731,25 @@
     $('.mailbox-messages input[type="checkbox"]').iCheck({
         checkboxClass: 'icheckbox_flat-blue',
         radioClass: 'iradio_flat-blue'
+    });
+
+    //Parameter
+    $('.task-delete').click(function(e){
+        swal({
+            title: "Estás seguro de eliminar la tarea?",
+            text: "No podrás deshacer esta acción!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Si, estoy seguro!",
+            cancelButtonText: "No, mejor no!",
+            closeOnConfirm: false
+        }, function(isConfirm){
+            if (isConfirm) {
+                $('#task-delete-frm').attr('action', '/tasks/' + $(e.currentTarget).attr('data-id'));
+                $('#task-delete-frm').submit();
+            }
+        });
     });
 </script>
 

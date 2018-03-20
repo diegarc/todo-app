@@ -29,7 +29,7 @@
                                     @endforeach
                                 </td>
                                 <td width="20">
-                                    <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="" data-original-title="Delete">
+                                    <button data-id="{{ $task->id }}" type="button" class="btn btn-box-tool task-delete" data-toggle="tooltip" title="" data-original-title="Delete">
                                         <i class="fa fa-remove"></i>
                                     </button>
                                 </td>
@@ -45,4 +45,9 @@
         </div>
         <!-- /.box -->
     </section>
+
+    <form id="task-delete-frm" method="post">
+        @csrf
+        @method('DELETE')
+    </form>
 @endsection
