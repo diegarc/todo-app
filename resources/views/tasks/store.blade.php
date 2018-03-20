@@ -18,6 +18,11 @@
                 @endif
 
                 <div class="box-body">
+                    <div class="checkbox">
+                        <input type="checkbox" name="starred" id="starred" {{ $task->starred ? 'checked' : '' }}>
+                        <label for="starred">Destacada</label>
+                    </div>
+
                     <div class="form-group {{ $errors->has('text') ? 'has-error' : '' }}">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-bookmark"></i></span>

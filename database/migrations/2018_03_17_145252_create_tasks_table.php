@@ -17,6 +17,7 @@ class CreateTasksTable extends Migration
             $table->increments('id');
             $table->string('text');
             $table->text('description')->nullable();
+            $table->boolean('starred')->default(false);
             $table->integer('user_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();

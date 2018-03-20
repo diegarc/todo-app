@@ -19,6 +19,9 @@
                         @foreach($tasks as $task)
                             <tr>
                                 <td width="50"><input type="checkbox"></td>
+                                <td width="40" class="mailbox-star">
+                                    <a href="#"><i class="fa {{ $task->starred ? 'fa-star' : 'fa-star-o' }} text-yellow"></i></a>
+                                </td>
                                 <td class="mailbox-name">
                                     <a href="/tasks/{{ $task->id }}/edit">{{ $task->text }}</a>
                                     <p class="text-muted no-margin">{{ $task->description }}</p>

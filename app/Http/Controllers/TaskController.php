@@ -45,19 +45,22 @@ class TaskController extends Controller
         $task = new Task();
         $task->text = $request->text;
         $task->description = $request->description;
+        $task->starred = boolval($request->starred);
         $task->user_id = Auth::id();
         $task->save();
 
-        foreach ($request->tags as $tag_text) {
-            $tag = Tag::findByText($tag_text)->first();
+        if ($request->tags) {
+            foreach ($request->tags as $tag_text) {
+                $tag = Tag::findByText($tag_text)->first();
 
-            if ($tag) {
-                $task->tags()->attach($tag);
-            } else {
-                $task->tags()->create([
-                    'text' => $tag_text,
-                    'user_id' => Auth::id()
-                ]);
+                if ($tag) {
+                    $task->tags()->attach($tag);
+                } else {
+                    $task->tags()->create([
+                        'text' => $tag_text,
+                        'user_id' => Auth::id()
+                    ]);
+                }
             }
         }
 
@@ -67,7 +70,7 @@ class TaskController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  Task  $task
+     * @param  Task $task
      * @return \Illuminate\Http\Response
      */
     public function show(Task $task)
@@ -78,7 +81,7 @@ class TaskController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Task  $task
+     * @param  Task $task
      * @return \Illuminate\Http\Response
      */
     public function edit(Task $task)
@@ -92,28 +95,31 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  Task  $task
+     * @param  \Illuminate\Http\Request $request
+     * @param  Task $task
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Task $task)
     {
         $task->text = $request->text;
         $task->description = $request->description;
+        $task->starred = boolval($request->starred);
         $task->save();
 
         $task->tags()->detach();
 
-        foreach ($request->tags as $tag_text) {
-            $tag = Tag::findByText($tag_text)->first();
+        if ($request->tags) {
+            foreach ($request->tags as $tag_text) {
+                $tag = Tag::findByText($tag_text)->first();
 
-            if ($tag) {
-                $task->tags()->attach($tag);
-            } else {
-                $task->tags()->create([
-                    'text' => $tag_text,
-                    'user_id' => Auth::id()
-                ]);
+                if ($tag) {
+                    $task->tags()->attach($tag);
+                } else {
+                    $task->tags()->create([
+                        'text' => $tag_text,
+                        'user_id' => Auth::id()
+                    ]);
+                }
             }
         }
 
@@ -123,7 +129,7 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Task  $task
+     * @param  Task $task
      * @return \Illuminate\Http\Response
      */
     public function destroy(Task $task)
