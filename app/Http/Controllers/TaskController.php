@@ -187,6 +187,20 @@ class TaskController extends Controller
     }
 
     /**
+     * Update the starred attribute of the specified resource in storage.
+     *
+     * @param Task $task
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function toggleStarred(Task $task)
+    {
+        $task->starred = !$task->starred;
+        $task->save();
+
+        return back();
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  Task $task

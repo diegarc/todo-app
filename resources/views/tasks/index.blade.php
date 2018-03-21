@@ -50,7 +50,7 @@
                             <tr>
                                 <td width="50"><input type="checkbox" data-id="{{ $task->id }}"></td>
                                 <td width="40" class="mailbox-star">
-                                    <a href="#">
+                                    <a href="#" class="task-starred" data-id="{{ $task->id }}">
                                         <i class="fa {{ $task->starred ? 'fa-star' : 'fa-star-o' }} text-yellow"></i>
                                     </a>
                                 </td>
@@ -84,6 +84,10 @@
     <form id="task-done-frm" method="post">
         @csrf
         @method('DELETE')
+    </form>
+
+    <form id="task-starred-frm" method="post">
+        @csrf
     </form>
 
     <form id="task-delete-frm" method="post">

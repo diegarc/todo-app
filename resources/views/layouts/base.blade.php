@@ -529,9 +529,14 @@
         });
     });
 
-    $('.mailbox-messages input[type="checkbox"]').on('ifChecked', function(e){
+    $('.mailbox-messages input[type="checkbox"]').on('ifChecked', function (e) {
         $('#task-done-frm').attr('action', '/tasks/done/' + $(e.currentTarget).attr('data-id'));
         $('#task-done-frm').submit();
+    });
+
+    $('.task-starred').click(function (e) {
+        $('#task-starred-frm').attr('action', '/tasks/starred/' + $(e.currentTarget).attr('data-id'));
+        $('#task-starred-frm').submit();
     });
 </script>
 
