@@ -22,6 +22,17 @@ class TaskController extends Controller
     }
 
     /**
+     * Display a listing of starred tasks.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function starred()
+    {
+        $data['tasks'] = Task::filter(true)->get();
+        return view('tasks.index', $data);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

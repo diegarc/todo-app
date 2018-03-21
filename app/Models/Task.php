@@ -40,4 +40,20 @@ class Task extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
+
+    /**
+     * Scope a query to only include filtered tasks.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param boolean $starred
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeFilter($query, $starred)
+    {
+        if ($starred !== null) {
+            $query->where('starred', $starred);
+        }
+
+        return $query;
+    }
 }
