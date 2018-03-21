@@ -117,7 +117,8 @@ return [
     */
 
     'attributes' => [
-        'text' => 'tarea'
+        'text' => 'tarea',
+        'name' => 'nombre',
     ],
 
 ];

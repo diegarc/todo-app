@@ -412,6 +412,14 @@
             </span>
                     </a>
                 </li>
+                <li>
+                    <a href="/projects/create">
+                        <i class="fa fa-plus-square"></i> <span>Nuevo</span>
+                        <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+                    </a>
+                </li>
 
             </ul>
         </section>

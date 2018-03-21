@@ -20,3 +20,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/tasks/starred', 'TaskController@starred');
 Route::resource('tasks', 'TaskController');
+Route::resource('projects', 'ProjectController');
