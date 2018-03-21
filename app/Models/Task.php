@@ -46,12 +46,17 @@ class Task extends Model
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @param boolean $starred
+     * @param mixed $project
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeFilter($query, $starred)
+    public function scopeFilter($query, $starred, $project)
     {
         if ($starred !== null) {
             $query->where('starred', $starred);
+        }
+
+        if ($project !== false) {
+            $query->where('project_id', $project);
         }
 
         return $query;

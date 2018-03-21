@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="/images/favicon.ico">
 
-    <title>MinimalPro Admin - Dashboard  Blank Page </title>
+    <title>MinimalPro Admin - Dashboard Blank Page </title>
 
     <!-- Bootstrap 4.0-->
     <link rel="stylesheet" href="/assets/vendor_components/bootstrap/dist/css/bootstrap.min.css">
@@ -71,7 +71,8 @@
                     <li class="search-box">
                         <a class="nav-link hidden-sm-down" href="javascript:void(0)"><i class="mdi mdi-magnify"></i></a>
                         <form class="app-search" style="display: none;">
-                            <input type="text" class="form-control" placeholder="Search &amp; enter"> <a class="srh-btn"><i class="ti-close"></i></a>
+                            <input type="text" class="form-control" placeholder="Search &amp; enter"> <a
+                                    class="srh-btn"><i class="ti-close"></i></a>
                         </form>
                     </li>
 
@@ -88,7 +89,8 @@
                                     <li><!-- start message -->
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="/images/user2-160x160.jpg" class="rounded-circle" alt="User Image">
+                                                <img src="/images/user2-160x160.jpg" class="rounded-circle"
+                                                     alt="User Image">
                                             </div>
                                             <div class="mail-contnet">
                                                 <h4>
@@ -103,7 +105,8 @@
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="/images/user3-128x128.jpg" class="rounded-circle" alt="User Image">
+                                                <img src="/images/user3-128x128.jpg" class="rounded-circle"
+                                                     alt="User Image">
                                             </div>
                                             <div class="mail-contnet">
                                                 <h4>
@@ -117,7 +120,8 @@
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="/images/user4-128x128.jpg" class="rounded-circle" alt="User Image">
+                                                <img src="/images/user4-128x128.jpg" class="rounded-circle"
+                                                     alt="User Image">
                                             </div>
                                             <div class="mail-contnet">
                                                 <h4>
@@ -131,7 +135,8 @@
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="/images/user3-128x128.jpg" class="rounded-circle" alt="User Image">
+                                                <img src="/images/user3-128x128.jpg" class="rounded-circle"
+                                                     alt="User Image">
                                             </div>
                                             <div class="mail-contnet">
                                                 <h4>
@@ -145,7 +150,8 @@
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="/images/user4-128x128.jpg" class="rounded-circle" alt="User Image">
+                                                <img src="/images/user4-128x128.jpg" class="rounded-circle"
+                                                     alt="User Image">
                                             </div>
                                             <div class="mail-contnet">
                                                 <h4>
@@ -173,17 +179,20 @@
                                 <ul class="menu inner-content-div">
                                     <li>
                                         <a href="#">
-                                            <i class="fa fa-users text-aqua"></i> Curabitur id eros quis nunc suscipit blandit.
+                                            <i class="fa fa-users text-aqua"></i> Curabitur id eros quis nunc suscipit
+                                            blandit.
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <i class="fa fa-warning text-yellow"></i> Duis malesuada justo eu sapien elementum, in semper diam posuere.
+                                            <i class="fa fa-warning text-yellow"></i> Duis malesuada justo eu sapien
+                                            elementum, in semper diam posuere.
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <i class="fa fa-users text-red"></i> Donec at nisi sit amet tortor commodo porttitor pretium a erat.
+                                            <i class="fa fa-users text-red"></i> Donec at nisi sit amet tortor commodo
+                                            porttitor pretium a erat.
                                         </a>
                                     </li>
                                     <li>
@@ -193,7 +202,8 @@
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <i class="fa fa-user text-red"></i> Praesent eu lacus in libero dictum fermentum.
+                                            <i class="fa fa-user text-red"></i> Praesent eu lacus in libero dictum
+                                            fermentum.
                                         </a>
                                     </li>
                                     <li>
@@ -203,7 +213,8 @@
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <i class="fa fa-user text-red"></i> Nullam euismod dolor ut quam interdum, at scelerisque ipsum imperdiet.
+                                            <i class="fa fa-user text-red"></i> Nullam euismod dolor ut quam interdum,
+                                            at scelerisque ipsum imperdiet.
                                         </a>
                                     </li>
                                 </ul>
@@ -228,7 +239,8 @@
                                                 <small class="pull-right">30%</small>
                                             </h3>
                                             <div class="progress xs">
-                                                <div class="progress-bar progress-bar-aqua" style="width: 30%" role="progressbar"
+                                                <div class="progress-bar progress-bar-aqua" style="width: 30%"
+                                                     role="progressbar"
                                                      aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                                                     <span class="sr-only">30% Complete</span>
                                                 </div>
@@ -243,7 +255,8 @@
                                                 <small class="pull-right">20%</small>
                                             </h3>
                                             <div class="progress xs">
-                                                <div class="progress-bar progress-bar-danger" style="width: 20%" role="progressbar"
+                                                <div class="progress-bar progress-bar-danger" style="width: 20%"
+                                                     role="progressbar"
                                                      aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                                                     <span class="sr-only">20% Complete</span>
                                                 </div>
@@ -258,7 +271,8 @@
                                                 <small class="pull-right">70%</small>
                                             </h3>
                                             <div class="progress xs">
-                                                <div class="progress-bar progress-bar-light-blue" style="width: 70%" role="progressbar"
+                                                <div class="progress-bar progress-bar-light-blue" style="width: 70%"
+                                                     role="progressbar"
                                                      aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                                                     <span class="sr-only">70% Complete</span>
                                                 </div>
@@ -273,7 +287,8 @@
                                                 <small class="pull-right">40%</small>
                                             </h3>
                                             <div class="progress xs">
-                                                <div class="progress-bar progress-bar-yellow" style="width: 40%" role="progressbar"
+                                                <div class="progress-bar progress-bar-yellow" style="width: 40%"
+                                                     role="progressbar"
                                                      aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                                                     <span class="sr-only">40% Complete</span>
                                                 </div>
@@ -288,7 +303,8 @@
                                                 <small class="pull-right">80%</small>
                                             </h3>
                                             <div class="progress xs">
-                                                <div class="progress-bar progress-bar-red" style="width: 80%" role="progressbar"
+                                                <div class="progress-bar progress-bar-red" style="width: 80%"
+                                                     role="progressbar"
                                                      aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                                                     <span class="sr-only">80% Complete</span>
                                                 </div>
@@ -303,7 +319,8 @@
                                                 <small class="pull-right">90%</small>
                                             </h3>
                                             <div class="progress xs">
-                                                <div class="progress-bar progress-bar-primary" style="width: 90%" role="progressbar"
+                                                <div class="progress-bar progress-bar-primary" style="width: 90%"
+                                                     role="progressbar"
                                                      aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                                                     <span class="sr-only">90% Complete</span>
                                                 </div>
@@ -375,49 +392,35 @@
                     <a href="/tasks">
                         <i class="fa fa-inbox"></i> <span>Tareas</span>
                         <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
+                            <i class="fa fa-angle-right pull-right"></i>
+                        </span>
                     </a>
                 </li>
                 <li>
                     <a href="/tasks/starred">
                         <i class="fa fa-star"></i> <span>Destacadas</span>
                         <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
+                            <i class="fa fa-angle-right pull-right"></i>
+                        </span>
                     </a>
                 </li>
                 <li class="header nav-small-cap">Proyectos</li>
-                <li>
-                    <a href="../email/index.html">
-                        <i class="fa fa-circle-thin"></i> <span>Emails</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="../email/index.html">
-                        <i class="fa fa-circle-thin"></i> <span>Emails</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="../email/index.html">
-                        <i class="fa fa-circle-thin"></i> <span>Emails</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-                    </a>
-                </li>
+                @foreach($projects as $project)
+                    <li>
+                        <a href="/tasks/project/{{ $project->id }}">
+                            <i class="fa fa-circle-thin"></i> <span>{{ $project->name }}</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                    </li>
+                @endforeach
                 <li>
                     <a href="/projects/create">
                         <i class="fa fa-plus-square"></i> <span>Nuevo</span>
                         <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
+                            <i class="fa fa-angle-right pull-right"></i>
+                        </span>
                     </a>
                 </li>
 
@@ -440,7 +443,9 @@
                     <a class="nav-link" href="javascript:void(0)">FAQ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://themeforest.net/item/minimal-pro-responsive-bootstrap-4-admin-dashboard-template-webapp-template/21067203">Purchase Now</a>
+                    <a class="nav-link"
+                       href="https://themeforest.net/item/minimal-pro-responsive-bootstrap-4-admin-dashboard-template-webapp-template/21067203">Purchase
+                        Now</a>
                 </li>
             </ul>
         </div>
@@ -488,7 +493,7 @@
     });
 
     //Parameter
-    $('.task-delete').click(function(e){
+    $('.task-delete').click(function (e) {
         swal({
             title: "Estás seguro de eliminar la tarea?",
             text: "No podrás deshacer esta acción!",
@@ -498,7 +503,7 @@
             confirmButtonText: "Si, estoy seguro!",
             cancelButtonText: "No, mejor no!",
             closeOnConfirm: false
-        }, function(isConfirm){
+        }, function (isConfirm) {
             if (isConfirm) {
                 $('#task-delete-frm').attr('action', '/tasks/' + $(e.currentTarget).attr('data-id'));
                 $('#task-delete-frm').submit();
