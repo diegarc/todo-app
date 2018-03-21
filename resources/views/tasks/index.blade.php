@@ -33,7 +33,13 @@
     <!-- Main content -->
     <section class="content">
 
-        <a href="/tasks/create" class="btn btn-info margin-bottom">Nueva tarea</a>
+        @if(isset($project))
+            <a href="/tasks/create/{{ $project->id }}" class="btn btn-info margin-bottom">Nueva tarea</a>
+        @elseif(isset($starred) && $starred)
+            <a href="/tasks/create/starred" class="btn btn-info margin-bottom">Nueva tarea</a>
+        @else
+            <a href="/tasks/create" class="btn btn-info margin-bottom">Nueva tarea</a>
+        @endif
 
         <div class="box">
             <div class="box-body">
@@ -44,8 +50,9 @@
                             <tr>
                                 <td width="50"><input type="checkbox"></td>
                                 <td width="40" class="mailbox-star">
-                                    <a href="#"><i
-                                                class="fa {{ $task->starred ? 'fa-star' : 'fa-star-o' }} text-yellow"></i></a>
+                                    <a href="#">
+                                        <i class="fa {{ $task->starred ? 'fa-star' : 'fa-star-o' }} text-yellow"></i>
+                                    </a>
                                 </td>
                                 <td class="mailbox-name">
                                     <a href="/tasks/{{ $task->id }}/edit">{{ $task->text }}</a>
@@ -57,8 +64,7 @@
                                     @endforeach
                                 </td>
                                 <td width="20">
-                                    <button data-id="{{ $task->id }}" type="button" class="btn btn-box-tool task-delete"
-                                            data-toggle="tooltip" title="" data-original-title="Delete">
+                                    <button data-id="{{ $task->id }}" type="button" class="btn btn-box-tool task-delete">
                                         <i class="fa fa-remove"></i>
                                     </button>
                                 </td>

@@ -18,7 +18,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $data['tasks'] = Task::filter(null, null)->get();
+        $data['tasks'] = Task::whereNull('project_id')->get();
         return view('tasks.index', $data);
     }
 
@@ -29,7 +29,7 @@ class TaskController extends Controller
      */
     public function starred()
     {
-        $data['tasks'] = Task::filter(true, false)->get();
+        $data['tasks'] = Task::where('starred', true)->get();
         $data['starred'] = true;
         return view('tasks.index', $data);
     }
@@ -42,7 +42,7 @@ class TaskController extends Controller
      */
     public function byProject(Project $project)
     {
-        $data['tasks'] = Task::filter(null, $project->id)->get();
+        $data['tasks'] = Task::where('project_id', $project->id)->get();
         $data['project'] = $project;
         return view('tasks.index', $data);
     }
@@ -50,11 +50,31 @@ class TaskController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+     * @param int $projectId
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($projectId = null)
     {
-        $data['task'] = new Task();
+        $task = new Task();
+        $task->project_id = $projectId;
+
+        $data['task'] = $task;
+        $data['tags'] = Tag::orderBy('text')->get();
+
+        return view('tasks.store', $data);
+    }
+
+    /**
+     * Show the form for creating a new starred resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createStarred()
+    {
+        $task = new Task();
+        $task->starred = true;
+
+        $data['task'] = $task;
         $data['tags'] = Tag::orderBy('text')->get();
 
         return view('tasks.store', $data);
@@ -93,6 +113,8 @@ class TaskController extends Controller
 
         if ($task->project_id) {
             return redirect('/tasks/project/' . $task->project_id);
+        } elseif ($task->starred) {
+            return redirect('/tasks/starred');
         } else {
             return redirect('/tasks');
         }
@@ -157,6 +179,8 @@ class TaskController extends Controller
 
         if ($task->project_id) {
             return redirect('/tasks/project/' . $task->project_id);
+        } elseif ($task->starred) {
+            return redirect('/tasks/starred');
         } else {
             return redirect('/tasks');
         }

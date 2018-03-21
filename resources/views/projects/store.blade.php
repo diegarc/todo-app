@@ -37,11 +37,7 @@
 
                 <div class="box-footer">
                     <button type="submit" class="btn btn-info">Guardar</button>
-                    @if($project->id)
-                        <a href="/tasks/project/{{ $project->id }}" class="btn btn-default">Cancelar</a>
-                    @else
-                        <a href="/tasks" class="btn btn-default">Cancelar</a>
-                    @endif
+                    <a href="{{ url()->previous() }}" class="btn btn-default">Cancelar</a>
 
                 </div>
             </form>
