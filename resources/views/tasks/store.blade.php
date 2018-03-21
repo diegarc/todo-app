@@ -33,6 +33,17 @@
                     </div>
 
                     <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-folder"></i></span>
+                        <select id="tags" name="project" class="form-control select2" data-placeholder="Proyecto">
+                            <option></option>
+                            @foreach($projects as $project)
+                                <option value="{{ $project->id }}" {{ $project->id == $task->project_id ? 'selected' : '' }}>{{ $project->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <br/>
+
+                    <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-tag"></i></span>
                         <select name="tags[]" class="form-control select2" multiple="multiple"
                                 data-placeholder="Etiquetas">

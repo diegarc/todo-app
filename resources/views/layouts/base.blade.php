@@ -485,7 +485,8 @@
 
 <script>
     //Initialize Select2 Elements
-    $('.select2').select2({tags: true});
+    $('#tags').select2({tags: true});
+    $('.select2').select2({allowClear: true});
 
     $('.mailbox-messages input[type="checkbox"]').iCheck({
         checkboxClass: 'icheckbox_flat-blue',

@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('*', function ($view) {
-            $projects = Project::all();
+            $projects = Project::orderBy('name')->get();
             $view->with('projects', $projects);
         });
     }

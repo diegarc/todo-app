@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTask;
+use App\Models\Project;
 use App\Models\Tag;
 use App\Models\Task;
 use Illuminate\Http\Request;
@@ -69,6 +70,7 @@ class TaskController extends Controller
         $task->text = $request->text;
         $task->description = $request->description;
         $task->starred = boolval($request->starred);
+        $task->project_id = $request->project;
         $task->user_id = Auth::id();
         $task->save();
 
@@ -87,7 +89,11 @@ class TaskController extends Controller
             }
         }
 
-        return redirect('/tasks');
+        if ($task->project_id) {
+            return redirect('/tasks/project/' . $task->project_id);
+        } else {
+            return redirect('/tasks');
+        }
     }
 
     /**
@@ -127,6 +133,7 @@ class TaskController extends Controller
         $task->text = $request->text;
         $task->description = $request->description;
         $task->starred = boolval($request->starred);
+        $task->project_id = $request->project;
         $task->save();
 
         $task->tags()->detach();
@@ -146,7 +153,11 @@ class TaskController extends Controller
             }
         }
 
-        return redirect('/tasks');
+        if ($task->project_id) {
+            return redirect('/tasks/project/' . $task->project_id);
+        } else {
+            return redirect('/tasks');
+        }
     }
 
     /**
