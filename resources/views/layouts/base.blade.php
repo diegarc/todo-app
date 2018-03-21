@@ -528,6 +528,11 @@
             }
         });
     });
+
+    $('.mailbox-messages input[type="checkbox"]').on('ifChecked', function(e){
+        $('#task-done-frm').attr('action', '/tasks/done/' + $(e.currentTarget).attr('data-id'));
+        $('#task-done-frm').submit();
+    });
 </script>
 
 </body>

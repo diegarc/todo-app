@@ -192,10 +192,23 @@ class TaskController extends Controller
      * @param  Task $task
      * @return \Illuminate\Http\Response
      */
+    public function done(Task $task)
+    {
+        $task->delete();
+
+        return back();
+    }
+
+    /**
+     * Destroy the specified resource from storage.
+     *
+     * @param  Task $task
+     * @return \Illuminate\Http\Response
+     */
     public function destroy(Task $task)
     {
         $task->forceDelete();
 
-        return redirect('/tasks');
+        return back();
     }
 }
