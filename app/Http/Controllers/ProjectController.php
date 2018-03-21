@@ -67,7 +67,9 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        $data['project'] = $project;
+
+        return view('projects.store', $data);
     }
 
     /**
@@ -79,7 +81,11 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $project->name = $request->name;
+        $project->description = $request->description;
+        $project->save();
+
+        return redirect('/tasks/project/' . $project->id);
     }
 
     /**
@@ -90,6 +96,8 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+
+        return redirect('/tasks');
     }
 }

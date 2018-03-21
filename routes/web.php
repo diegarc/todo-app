@@ -19,6 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/tasks/starred', 'TaskController@starred');
-Route::get('/tasks/project/{projectId}', 'TaskController@byProject');
+Route::get('/tasks/project/{project}', 'TaskController@byProject');
 Route::resource('tasks', 'TaskController');
 Route::resource('projects', 'ProjectController');

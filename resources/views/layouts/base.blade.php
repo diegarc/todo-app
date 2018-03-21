@@ -493,7 +493,6 @@
         radioClass: 'iradio_flat-blue'
     });
 
-    //Parameter
     $('.task-delete').click(function (e) {
         swal({
             title: "Estás seguro de eliminar la tarea?",
@@ -508,6 +507,24 @@
             if (isConfirm) {
                 $('#task-delete-frm').attr('action', '/tasks/' + $(e.currentTarget).attr('data-id'));
                 $('#task-delete-frm').submit();
+            }
+        });
+    });
+
+    $('.project-delete').click(function (e) {
+        swal({
+            title: "Estás seguro de eliminar el proyecto?",
+            text: "No podrás deshacer esta acción!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Si, estoy seguro!",
+            cancelButtonText: "No, mejor no!",
+            closeOnConfirm: false
+        }, function (isConfirm) {
+            if (isConfirm) {
+                $('#project-delete-frm').attr('action', '/projects/' + $(e.currentTarget).attr('data-id'));
+                $('#project-delete-frm').submit();
             }
         });
     });

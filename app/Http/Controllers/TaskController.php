@@ -30,18 +30,20 @@ class TaskController extends Controller
     public function starred()
     {
         $data['tasks'] = Task::filter(true, false)->get();
+        $data['starred'] = true;
         return view('tasks.index', $data);
     }
 
     /**
      * Display a listing of starred tasks.
      *
-     * @param int $projectId
+     * @param Project $project
      * @return \Illuminate\Http\Response
      */
-    public function byProject($projectId)
+    public function byProject(Project $project)
     {
-        $data['tasks'] = Task::filter(null, $projectId)->get();
+        $data['tasks'] = Task::filter(null, $project->id)->get();
+        $data['project'] = $project;
         return view('tasks.index', $data);
     }
 
