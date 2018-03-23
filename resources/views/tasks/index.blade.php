@@ -62,9 +62,13 @@
                                     @foreach($task->tags as $tag)
                                         <div class="badge badge-dark">{{ $tag->text }}</div>
                                     @endforeach
+                                    @if($task->due_at)
+                                        <span class="badge badge-{{ $task->due_at_state == 'normal' ? 'dark' : 'danger' }}">{{ $task->due_at_formatted }}</span>
+                                    @endif
                                 </td>
                                 <td width="20">
-                                    <button data-id="{{ $task->id }}" type="button" class="btn btn-box-tool task-delete">
+                                    <button data-id="{{ $task->id }}" type="button"
+                                            class="btn btn-box-tool task-delete">
                                         <i class="fa fa-remove"></i>
                                     </button>
                                 </td>

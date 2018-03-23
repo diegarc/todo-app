@@ -18,6 +18,7 @@ class CreateTasksTable extends Migration
             $table->string('text');
             $table->text('description')->nullable();
             $table->boolean('starred')->default(false);
+            $table->date('due_at')->nullable();
             $table->integer('user_id')->unsigned();
             $table->integer('project_id')->unsigned()->nullable();
             $table->timestamps();

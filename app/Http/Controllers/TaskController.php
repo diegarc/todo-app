@@ -92,6 +92,7 @@ class TaskController extends Controller
         $task->text = $request->text;
         $task->description = $request->description;
         $task->starred = boolval($request->starred);
+        $task->due_at = $request->due_at;
         $task->project_id = $request->project;
         $task->user_id = Auth::id();
         $task->save();
@@ -157,6 +158,7 @@ class TaskController extends Controller
         $task->text = $request->text;
         $task->description = $request->description;
         $task->starred = boolval($request->starred);
+        $task->due_at = $request->due_at;
         $task->project_id = $request->project;
         $task->save();
 

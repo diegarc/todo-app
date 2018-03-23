@@ -32,20 +32,33 @@
                         <span class="help-block">{{ $errors->first('text') }}</span>
                     </div>
 
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-folder"></i></span>
-                        <select id="tags" name="project" class="form-control select2" data-placeholder="Proyecto">
-                            <option></option>
-                            @foreach($projects as $project)
-                                <option value="{{ $project->id }}" {{ $project->id == $task->project_id ? 'selected' : '' }}>{{ $project->name }}</option>
-                            @endforeach
-                        </select>
+                    <div class="row margin-bottom">
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-folder"></i></span>
+                                <select id="project" name="project" class="form-control select2" data-placeholder="Proyecto">
+                                    <option></option>
+                                    @foreach($projects as $project)
+                                        <option value="{{ $project->id }}" {{ $project->id == $task->project_id ? 'selected' : '' }}>{{ $project->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="input-group date">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" class="form-control pull-right" id="datepicker" name="due_at" value="{{ $task->due_at ? $task->due_at->toDateString() : '' }}">
+                            </div>
+                            <!-- /.input group -->
+                        </div>
                     </div>
-                    <br/>
 
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-tag"></i></span>
-                        <select name="tags[]" class="form-control select2" multiple="multiple"
+                        <select id="tags" name="tags[]" class="form-control select2" multiple="multiple"
                                 data-placeholder="Etiquetas">
                             @foreach($tags as $tag)
                                 <option {{ $task->tags->pluck('id')->search($tag->id) !== false ? 'selected' : '' }}>{{ $tag->text }}</option>

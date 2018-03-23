@@ -16,6 +16,9 @@
     <!-- Bootstrap 4.0-->
     <link rel="stylesheet" href="/assets/vendor_components/bootstrap/dist/css/bootstrap-extend.css">
 
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="/assets/vendor_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
     <!-- Select2 -->
     <link rel="stylesheet" href="/assets/vendor_components/select2/dist/css/select2.min.css">
 
@@ -467,6 +470,9 @@
 <!-- Select2 -->
 <script src="/assets/vendor_components/select2/dist/js/select2.full.js"></script>
 
+<!-- bootstrap datepicker -->
+<script src="/assets/vendor_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
 <!-- SlimScroll -->
 <script src="/assets/vendor_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 
@@ -485,8 +491,8 @@
 
 <script>
     //Initialize Select2 Elements
+    $('#project').select2({allowClear: true});
     $('#tags').select2({tags: true});
-    $('.select2').select2({allowClear: true});
 
     $('.mailbox-messages input[type="checkbox"]').iCheck({
         checkboxClass: 'icheckbox_flat-blue',
@@ -537,6 +543,15 @@
     $('.task-starred').click(function (e) {
         $('#task-starred-frm').attr('action', '/tasks/starred/' + $(e.currentTarget).attr('data-id'));
         $('#task-starred-frm').submit();
+    });
+
+    //Date picker
+    $('#datepicker').datepicker({
+        autoclose: true,
+        format: 'yyyy-mm-dd',
+        clearBtn: true,
+        todayBtn: 'linked',
+        todayHighlight: true
     });
 </script>
 
