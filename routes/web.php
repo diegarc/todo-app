@@ -11,18 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/tasks/starred', 'TaskController@starred');
-Route::get('/tasks/project/{project}', 'TaskController@byProject');
-Route::get('/tasks/create/starred', 'TaskController@createStarred');
-Route::get('/tasks/create/{projectId?}', 'TaskController@create');
-Route::delete('/tasks/done/{task}', 'TaskController@done');
-Route::post('/tasks/starred/{task}', 'TaskController@toggleStarred');
-Route::resource('tasks', 'TaskController');
-Route::resource('projects', 'ProjectController');
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/', 'TaskController@index');
+
+    Route::prefix('tasks')->group(function () {
+        Route::get('/starred', 'TaskController@starred');
+        Route::get('/project/{project}', 'TaskController@byProject');
+        Route::get('/create/starred', 'TaskController@createStarred');
+        Route::get('/create/{projectId?}', 'TaskController@create');
+        Route::post('/starred/{task}', 'TaskController@toggleStarred');
+        Route::delete('/done/{task}', 'TaskController@done');
+    });
+
+    Route::resource('tasks', 'TaskController');
+    Route::resource('projects', 'ProjectController');
+});
