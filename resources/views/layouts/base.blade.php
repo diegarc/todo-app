@@ -171,7 +171,7 @@
 <script src="/assets/vendor_components/jquery/dist/jquery.min.js"></script>
 
 <!-- popper -->
-<script src="/assets/vendor_components/popper/dist/popper.min.js"></script>
+<script src="https://unpkg.com/popper.js@1.14.1/dist/umd/popper.min.js"></script>
 
 <!-- Bootstrap 4.0-->
 <script src="/assets/vendor_components/bootstrap/dist/js/bootstrap.min.js"></script>
