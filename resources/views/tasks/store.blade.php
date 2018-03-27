@@ -36,7 +36,8 @@
                         <div class="col-sm-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-folder"></i></span>
-                                <select id="project" name="project" class="form-control select2" data-placeholder="Proyecto">
+                                <select id="project" name="project" class="form-control select2"
+                                        data-placeholder="Proyecto">
                                     <option></option>
                                     @foreach($projects as $project)
                                         <option value="{{ $project->id }}" {{ $project->id == $task->project_id ? 'selected' : '' }}>{{ $project->name }}</option>
@@ -50,7 +51,9 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" class="form-control pull-right" id="datepicker" name="due_at" value="{{ $task->due_at ? $task->due_at->toDateString() : '' }}">
+                                <input type="text" autocomplete="off" class="form-control pull-right" id="datepicker"
+                                       name="due_at" value="{{ $task->due_at ? $task->due_at->toDateString() : '' }}"
+                                       readonly>
                             </div>
                             <!-- /.input group -->
                         </div>
