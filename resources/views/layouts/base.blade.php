@@ -249,6 +249,11 @@
         $('#task-done-frm').submit();
     });
 
+    $('.mailbox-messages input[type="checkbox"]').on('ifUnchecked', function (e) {
+        $('#task-undone-frm').attr('action', '/tasks/undone/' + $(e.currentTarget).attr('data-id'));
+        $('#task-undone-frm').submit();
+    });
+
     $('.task-starred').click(function (e) {
         $('#task-starred-frm').attr('action', '/tasks/starred/' + $(e.currentTarget).attr('data-id'));
         $('#task-starred-frm').submit();

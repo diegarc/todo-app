@@ -23,6 +23,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/create/{projectId?}', 'TaskController@create');
         Route::post('/starred/{task}', 'TaskController@toggleStarred');
         Route::delete('/done/{task}', 'TaskController@done');
+        Route::post('/undone/{taskId}', 'TaskController@undone');
     });
 
     Route::resource('tasks', 'TaskController');

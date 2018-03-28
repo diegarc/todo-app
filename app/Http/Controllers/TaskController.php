@@ -19,6 +19,7 @@ class TaskController extends Controller
     public function index()
     {
         $data['tasks'] = Task::whereNull('project_id')->get();
+        $data['done'] = Task::whereNull('project_id')->onlyTrashed()->get();
         return view('tasks.index', $data);
     }
 
@@ -30,6 +31,7 @@ class TaskController extends Controller
     public function starred()
     {
         $data['tasks'] = Task::where('starred', true)->get();
+        $data['done'] = Task::where('starred', true)->onlyTrashed()->get();
         $data['starred'] = true;
         return view('tasks.index', $data);
     }
@@ -43,6 +45,7 @@ class TaskController extends Controller
     public function byProject(Project $project)
     {
         $data['tasks'] = Task::where('project_id', $project->id)->get();
+        $data['done'] = Task::where('project_id', $project->id)->onlyTrashed()->get();
         $data['project'] = $project;
         return view('tasks.index', $data);
     }
@@ -198,6 +201,20 @@ class TaskController extends Controller
     {
         $task->starred = !$task->starred;
         $task->save();
+
+        return back();
+    }
+
+    /**
+     * Restore the specified resource from storage.
+     *
+     * @param int $task
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function undone($taskId)
+    {
+        $task = Task::onlyTrashed()->where('id', $taskId)->first();
+        $task->restore();
 
         return back();
     }

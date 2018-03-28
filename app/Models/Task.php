@@ -85,4 +85,18 @@ class Task extends Model
             return null;
         }
     }
+
+    /**
+     * Get the due date formatted.
+     *
+     * @return null|string
+     */
+    public function getDeletedAtFormattedAttribute()
+    {
+        if ($this->deleted_at) {
+            return $this->deleted_at->toFormattedDateString();
+        } else {
+            return null;
+        }
+    }
 }

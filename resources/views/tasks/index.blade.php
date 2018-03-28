@@ -83,11 +83,50 @@
             <!-- /.box-body -->
         </div>
         <!-- /.box -->
+
+        <div class="box">
+            <div class="box-header with-border">
+                <h6 class="box-title">Terminadas</h6>
+            </div>
+            <div class="box-body no-padding">
+                <div class="mailbox-messages">
+                    <table class="table table-hover table-responsive">
+                        <tbody>
+                        @foreach($done as $task)
+                            <tr>
+                                <td width="50"><input type="checkbox" data-id="{{ $task->id }}" checked></td>
+                                <td width="40" class="mailbox-star">
+                                    <i class="fa {{ $task->starred ? 'fa-star' : 'fa-star-o' }} text-yellow"></i>
+                                </td>
+                                <td width="120">{{ $task->deleted_at_formatted }}</td>
+                                <td class="mailbox-name">
+                                    <del>{{ $task->text }}</del>
+                                </td>
+                                <td class="mailbox-name text-right">
+                                    @foreach($task->tags as $tag)
+                                        <div class="badge badge-dark">{{ $tag->text }}</div>
+                                    @endforeach
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                    <!-- /.table -->
+                </div>
+                <!-- /.mail-box-messages -->
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
     </section>
 
     <form id="task-done-frm" method="post">
         @csrf
         @method('DELETE')
+    </form>
+
+    <form id="task-undone-frm" method="post">
+        @csrf
     </form>
 
     <form id="task-starred-frm" method="post">
