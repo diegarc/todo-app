@@ -74,6 +74,11 @@
                                 </td>
                             </tr>
                         @endforeach
+                        @if(!$tasks->count())
+                            <tr>
+                                <td>No hay tareas</td>
+                            </tr>
+                        @endif
                         </tbody>
                     </table>
                     <!-- /.table -->
@@ -109,6 +114,11 @@
                                 </td>
                             </tr>
                         @endforeach
+                        @if(!$done->count())
+                            <tr>
+                                <td>No hay tareas</td>
+                            </tr>
+                        @endif
                         </tbody>
                     </table>
                     <!-- /.table -->
