@@ -6,8 +6,7 @@ use App\Http\Requests\StoreTask;
 use App\Models\Project;
 use App\Models\Tag;
 use App\Models\Task;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Repositories\TaskRepository;
 
 class TaskController extends Controller
 {
@@ -87,41 +86,13 @@ class TaskController extends Controller
      * Store a newly created resource in storage.
      *
      * @param StoreTask $request
+     * @param TaskRepository $taskRepository
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTask $request)
+    public function store(StoreTask $request, TaskRepository $taskRepository)
     {
-        $task = new Task();
-        $task->text = $request->text;
-        $task->description = $request->description;
-        $task->starred = boolval($request->starred);
-        $task->due_at = $request->due_at;
-        $task->project_id = $request->project;
-        $task->user_id = Auth::id();
-        $task->save();
-
-        if ($request->tags) {
-            foreach ($request->tags as $tag_text) {
-                $tag = Tag::findByText($tag_text)->first();
-
-                if ($tag) {
-                    $task->tags()->attach($tag);
-                } else {
-                    $task->tags()->create([
-                        'text' => $tag_text,
-                        'user_id' => Auth::id()
-                    ]);
-                }
-            }
-        }
-
-        if ($task->project_id) {
-            return redirect('/tasks/project/' . $task->project_id);
-        } elseif ($task->starred) {
-            return redirect('/tasks/starred');
-        } else {
-            return redirect('/tasks');
-        }
+        $task = $taskRepository->store($request->all());
+        return $this->afterStoredRedirect($task);
     }
 
     /**
@@ -152,36 +123,25 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  Task $task
+     * @param StoreTask $request
+     * @param Task $task
+     * @param TaskRepository $taskRepository
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Task $task)
+    public function update(StoreTask $request, Task $task, TaskRepository $taskRepository)
     {
-        $task->text = $request->text;
-        $task->description = $request->description;
-        $task->starred = boolval($request->starred);
-        $task->due_at = $request->due_at;
-        $task->project_id = $request->project;
-        $task->save();
+        $task = $taskRepository->store($request->all(), $task);
+        return $this->afterStoredRedirect($task);
+    }
 
-        $task->tags()->detach();
-
-        if ($request->tags) {
-            foreach ($request->tags as $tag_text) {
-                $tag = Tag::findByText($tag_text)->first();
-
-                if ($tag) {
-                    $task->tags()->attach($tag);
-                } else {
-                    $task->tags()->create([
-                        'text' => $tag_text,
-                        'user_id' => Auth::id()
-                    ]);
-                }
-            }
-        }
-
+    /**
+     * After stored redirect.
+     *
+     * @param $task
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    private function afterStoredRedirect($task)
+    {
         if ($task->project_id) {
             return redirect('/tasks/project/' . $task->project_id);
         } elseif ($task->starred) {
