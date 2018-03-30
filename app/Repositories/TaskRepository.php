@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\Auth;
 
 class TaskRepository
 {
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param $data
+     * @param Task $task
+     * @return Task
+     */
     public function store($data, Task $task = null)
     {
         if ($task === null) {
