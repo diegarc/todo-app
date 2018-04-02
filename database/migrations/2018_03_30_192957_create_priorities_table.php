@@ -20,9 +20,9 @@ class CreatePrioritiesTable extends Migration
             $table->timestamps();
         });
 
-        Priority::create(['name' => 'Baja']);
-        Priority::create(['name' => 'Media']);
         Priority::create(['name' => 'Alta']);
+        Priority::create(['name' => 'Media']);
+        Priority::create(['name' => 'Baja']);
     }
 
     /**

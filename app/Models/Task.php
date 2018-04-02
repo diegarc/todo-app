@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Scopes\UserScope;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -32,6 +33,10 @@ class Task extends Model
     {
         parent::boot();
         static::addGlobalScope(new UserScope());
+
+        static::addGlobalScope('order', function (Builder $builder) {
+            $builder->orderBy('priority_id')->orderBy('created_at');
+        });
     }
 
     /**
@@ -40,6 +45,14 @@ class Task extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+    /**
+     * Get the task priority.
+     */
+    public function priority()
+    {
+        return $this->belongsTo(Priority::class);
     }
 
     /**

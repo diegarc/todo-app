@@ -54,6 +54,13 @@
                                         <i class="fa {{ $task->starred ? 'fa-star' : 'fa-star-o' }} text-yellow"></i>
                                     </a>
                                 </td>
+                                <td width="40" class="mailbox-star">
+                                    @if($task->priority_id == 1)
+                                        <i class="fa fa-exclamation-circle text-red"></i>
+                                    @elseif($task->priority_id == 2)
+                                        <i class="fa fa-exclamation"></i>
+                                    @endif
+                                </td>
                                 <td class="mailbox-name">
                                     <a href="/tasks/{{ $task->id }}/edit">{{ $task->text }}</a>
                                     <p class="text-muted no-margin">{{ $task->description }}</p>
@@ -102,6 +109,13 @@
                                 <td width="50"><input type="checkbox" data-id="{{ $task->id }}" checked></td>
                                 <td width="40" class="mailbox-star">
                                     <i class="fa {{ $task->starred ? 'fa-star' : 'fa-star-o' }} text-yellow"></i>
+                                </td>
+                                <td width="40" class="mailbox-star">
+                                    @if($task->priority_id == 1)
+                                        <i class="fa fa-exclamation-circle text-red"></i>
+                                    @elseif($task->priority_id == 2)
+                                        <i class="fa fa-exclamation"></i>
+                                    @endif
                                 </td>
                                 <td width="120">{{ $task->deleted_at_formatted }}</td>
                                 <td class="mailbox-name">
