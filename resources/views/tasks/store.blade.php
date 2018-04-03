@@ -18,9 +18,27 @@
                 @endif
 
                 <div class="box-body">
-                    <div class="checkbox">
-                        <input type="checkbox" name="starred" id="starred" {{ $task->starred ? 'checked' : '' }}>
-                        <label for="starred">Destacada</label>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="checkbox">
+                                <input type="checkbox" name="starred" id="starred" {{ $task->starred ? 'checked' : '' }}>
+                                <label for="starred">Destacada</label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <label for="example-text-input" class="col-sm-2 col-form-label">Prioridad</label>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <input id="priority_1" name="priority_id" type="radio" class="with-gap" value="1" {{ $task->priority_id == 1 ? 'checked' : '' }} />
+                            <label for="priority_1">Alta</label>
+                            <input id="priority_2" name="priority_id" type="radio" class="with-gap" value="2" {{ $task->priority_id == 2 ? 'checked' : '' }} />
+                            <label for="priority_2">Media</label>
+                            <input id="priority_3" name="priority_id" type="radio" class="with-gap" value="3" {{ $task->priority_id == 3 ? 'checked' : '' }} />
+                            <label for="priority_3">Baja</label>
+                        </div>
                     </div>
 
                     <div class="form-group {{ $errors->has('text') ? 'has-error' : '' }}">

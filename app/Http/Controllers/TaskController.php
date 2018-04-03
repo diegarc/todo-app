@@ -59,6 +59,7 @@ class TaskController extends Controller
     {
         $task = new Task();
         $task->project_id = $projectId;
+        $task->priority_id = 2;
 
         $data['task'] = $task;
         $data['tags'] = Tag::orderBy('text')->get();
@@ -75,6 +76,7 @@ class TaskController extends Controller
     {
         $task = new Task();
         $task->starred = true;
+        $task->priority_id = 2;
 
         $data['task'] = $task;
         $data['tags'] = Tag::orderBy('text')->get();

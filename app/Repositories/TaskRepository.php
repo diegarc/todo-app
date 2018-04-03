@@ -26,12 +26,13 @@ class TaskRepository
         $task->starred = isset($data['starred']) ? boolval($data['starred']) : false;
         $task->due_at = $data['due_at'];
         $task->project_id = $data['project'];
+        $task->priority_id = $data['priority_id'];
         $task->user_id = Auth::id();
         $task->save();
 
         $task->tags()->detach();
 
-        if ($data['tags']) {
+        if (isset($data['tags'])) {
             foreach ($data['tags'] as $tag_text) {
                 $tag = Tag::findByText($tag_text)->first();
 
