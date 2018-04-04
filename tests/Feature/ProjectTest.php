@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\Models\Project;
+use App\Models\Task;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -23,13 +25,14 @@ class ProjectTest extends TestCase
 
         $this->actingAs($user)->post('/projects', $data);
 
+        $data['user_id'] = $user->id;
         $this->assertDatabaseHas('projects', $data);
     }
 
     /**
-     * Project create validations.
+     * Project validations.
      */
-    public function testCreateValidation()
+    public function testValidations()
     {
         $user = factory(User::class)->create();
         $data = ['name' => ''];
@@ -40,4 +43,38 @@ class ProjectTest extends TestCase
         $response->assertSessionMissing(['description']);
         $this->assertDatabaseMissing('projects', $data);
     }
+
+    /**
+     * Project update.
+     */
+    public function testUpdate()
+    {
+        $project = factory(Project::class)->create();
+        $user = User::find($project->user_id);
+        $data = [
+            'name' => 'Project name updated',
+            'description' => 'Project description updated'
+        ];
+
+        $this->actingAs($user)->put('/projects/' . $project->id, $data);
+
+        $data['id'] = $project->id;
+        $this->assertDatabaseHas('projects', $data);
+    }
+
+    /**
+     * Project delete.
+     */
+    public function testDelete()
+    {
+        $project = factory(Project::class)->create();
+        $task = factory(Task::class)->create(['project_id' => $project->id]);
+        $user = User::find($project->user_id);
+
+        $this->actingAs($user)->delete('/projects/' . $project->id);
+
+        $this->assertDatabaseMissing('projects', ['id' => $project->id]);
+        $this->assertDatabaseMissing('tasks', ['id' => $task->id]);
+    }
+
 }
