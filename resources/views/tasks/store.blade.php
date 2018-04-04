@@ -54,7 +54,7 @@
                         <div class="col-sm-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-folder"></i></span>
-                                <select id="project" name="project" class="form-control select2"
+                                <select id="project" name="project_id" class="form-control select2"
                                         data-placeholder="Proyecto">
                                     <option></option>
                                     @foreach($projects as $project)

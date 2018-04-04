@@ -25,7 +25,7 @@ class TaskRepository
         $task->description = $data['description'];
         $task->starred = isset($data['starred']) ? boolval($data['starred']) : false;
         $task->due_at = $data['due_at'];
-        $task->project_id = $data['project'];
+        $task->project_id = $data['project_id'];
         $task->priority_id = $data['priority_id'];
         $task->user_id = Auth::id();
         $task->save();
